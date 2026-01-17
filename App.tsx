@@ -343,7 +343,7 @@ const SkillsSection = () => {
                 className="flex flex-col items-center justify-center"
                 style={{ minWidth: 120 }}
               >
-                {typeof skill.icon === 'string' && skill.icon.startsWith('images/') ? (
+                {typeof skill.icon === 'string' && skill.icon.startsWith('/images/') ? (
                   <img src={skill.icon} alt={skill.name + ' logo'} className="h-20 w-20 object-contain" />
                 ) : (
                   <span className="text-6xl">{skill.icon}</span>
@@ -358,7 +358,7 @@ const SkillsSection = () => {
                 className="flex flex-col items-center justify-center"
                 style={{ minWidth: 120 }}
               >
-                {typeof skill.icon === 'string' && skill.icon.startsWith('images/') ? (
+                {typeof skill.icon === 'string' && skill.icon.startsWith('/images/') ? (
                   <img src={skill.icon} alt={skill.name + ' logo'} className="h-20 w-20 object-contain" />
                 ) : (
                   <span className="text-6xl">{skill.icon}</span>
@@ -413,7 +413,7 @@ const ExperienceSection = () => {
       duration: "June 2024 – August 2024",
       role: "AIML Research, Designing, Digital Marketing [Offline]",
       company: "Garuda3D",
-      logo: "images/garuda3d.png",
+      logo: "/images/garuda3d.png",
       points: [
         "Researched AI and ML for 3D print failure detection by AI.",
         "Created professional designs using Canva for Garuda 3D's products and services.",

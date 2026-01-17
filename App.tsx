@@ -2,55 +2,55 @@
 const SKILLS = [
   {
     name: "Python",
-    icon: <img src="images/python.png" alt="Python" style={{ width: 64, height: 64 }} />,
+    icon: <img src="/images/python.png" alt="Python" style={{ width: 64, height: 64 }} />,
     category: "Language",
     level: 97
   },
   {
     name: "PostgreSQL",
-    icon: <img src="images/postgresql.png" alt="PostgreSQL" style={{ width: 64, height: 64 }} />,
+    icon: <img src="/images/postgresql.png" alt="PostgreSQL" style={{ width: 64, height: 64 }} />,
     category: "Backend",
     level: 80
   },
   {
     name: "FastAPI",
-    icon: <img src="images/fastapi.png" alt="FastAPI" style={{ width: 64, height: 64 }} />,
+    icon: <img src="/images/fastapi.png" alt="FastAPI" style={{ width: 64, height: 64 }} />,
     category: "Backend",
     level: 95
   },
   {
     name: "GitHub",
-    icon: <img src="images/github.png" alt="GitHub" style={{ width: 64, height: 64 }} />,
+    icon: <img src="/images/github.png" alt="GitHub" style={{ width: 64, height: 64 }} />,
     category: "Cloud",
     level: 90
   },
   {
     name: "Gemini",
-    icon: <img src="images/gemini.png" alt="Gemini" style={{ width: 64, height: 64 }} />,
+    icon: <img src="/images/gemini.png" alt="Gemini" style={{ width: 64, height: 64 }} />,
     category: "AI/ML",
     level: 80
   },
   {
     name: "SQL",
-    icon: <img src="images/mysql.png" alt="MySQL" style={{ width: 64, height: 64 }} />,
+    icon: <img src="/images/mysql.png" alt="MySQL" style={{ width: 64, height: 64 }} />,
     category: "Backend",
     level: 80
   },
   {
     name: "MongoDB",
-    icon: <img src="images/mongodb.png" alt="MongoDB" style={{ width: 64, height: 64 }} />,
+    icon: <img src="/images/mongodb.png" alt="MongoDB" style={{ width: 64, height: 64 }} />,
     category: "Backend",
     level: 82
   },
   {
     name: "HuggingFace",
-    icon: <img src="images/huggingface.png" alt="Hugging Face" style={{ width: 64, height: 60 }} />,
+    icon: <img src="/images/huggingface.png" alt="Hugging Face" style={{ width: 64, height: 60 }} />,
     category: "AI/ML",
     level: 78
   },
   {
     name: "React",
-    icon: <img src="images/react.png" alt="React" style={{ width: 64, height: 64 }} />,
+    icon: <img src="/images/react.png" alt="React" style={{ width: 64, height: 64 }} />,
     category: "Frontend",
     level: 95
   }
@@ -138,7 +138,7 @@ const Navbar = () => {
           >
             VGA<span className="text-blue-500">.</span>
           </motion.div>
-          <img src="images/vivek.png" alt="Profile" className="w-8 h-8 rounded-full object-cover border-2 border-blue-500" />
+          <img src="/images/vivek.png" alt="Profile" className="w-8 h-8 rounded-full object-cover border-2 border-blue-500" />
         </div>
 
         {/* Desktop Nav */}
@@ -284,7 +284,7 @@ const About = () => {
             viewport={{ once: true }}
             className="relative glass rounded-3xl p-2 w-full max-w-[650px] h-auto bg-black flex items-center justify-center"
           >
-            <img src="images/story.png" alt="Vivek Goud Adula" className="rounded-2xl object-contain w-full h-auto grayscale hover:grayscale-0 transition-all duration-700 bg-black" />
+            <img src="/images/story.png" alt="Vivek Goud Adula" className="rounded-2xl object-contain w-full h-auto grayscale hover:grayscale-0 transition-all duration-700 bg-black" />
           </motion.div>
         </div>
 
@@ -387,7 +387,7 @@ const ExperienceSection = () => {
       duration: "May 2025 – August 2025",
       role: "Artificial Intelligence Intern [Hybrid]",
       company: "Viswam.AI, Swecha Foundation, IIIT-H",
-      logo: "images/viswamai.png",
+      logo: "/images/viswamai.png",
       points: [
         "Developed Streamlit-based AI applications integrating Hugging Face models for interactive Q&A.",
         "Built RAG - Retrieval-Augmented Generation chatbots for generating accurate AI-powered summaries.",
@@ -399,7 +399,7 @@ const ExperienceSection = () => {
       duration: "May 2025 – July 2025",
       role: "Artificial Intelligence Intern [Hybrid]",
       company: "GENAI Lakes, T-HUB",
-      logo: "images/genailakes.png",
+      logo: "/images/genailakes.png",
       points: [
         "Developed AI-based NEET & JEE Mock Testing Platform (Crack Orbit) using React, Node.js, and PostgreSQL.",
         "Built backend for Face Recognition Attendance System with Python (FastAPI) and PostgreSQL.",
@@ -425,7 +425,7 @@ const ExperienceSection = () => {
       duration: "May 2024",
       role: "Python development [Online]",
       company: "Cognifyz Technologies",
-      logo: "images/cognifyz.png",
+      logo: "/images/cognifyz.png",
       points: [
         "Crafted a Python-based automation script that reduced manual data entry time by 15 hours per week, improving data accuracy and reporting capabilities."
       ],
@@ -503,7 +503,7 @@ const WorkSection = () => {
         "Integrated resume parsing, JD analysis, topic generation, and quiz modules into one cohesive pipeline, enhancing the FastJob99 platform with an intelligent pre-interview preparation layer."
       ],
       tags: ["GenAI","Python", "React", "Gemini", "Resume Parsing"],
-      imageUrl: "images/jobprep.png"
+      imageUrl: "/images/jobprep.png"
     },
     {
       title: "AI-Powered Applicant Tracking System",
@@ -514,7 +514,7 @@ const WorkSection = () => {
         "Designed a matching module that identifies the best-fit candidates for each JD and integrated the entire solution with a Gradio-based user interface for quick testing and demos."
       ],
       tags: ["FastAPI", "Python", "Gradio", "ATS"],
-      imageUrl: "images/ats.png"
+      imageUrl: "/images/ats.png"
     },
     {
       title: "A holistic design and collaboration for accident rescue app",
@@ -524,7 +524,7 @@ const WorkSection = () => {
         "Collaborated on a platform that facilitates coordination among emergency responders, optimizing response times and resource allocation for improved post-accident care."
       ],
       tags: ["Accident Response", "IoT", "Emergency"],
-      imageUrl: "images/rescue.png"
+      imageUrl: "/images/rescue.png"
     },
     {
       title: "Energy consumption prediction using LSTM and RNN",
@@ -534,7 +534,7 @@ const WorkSection = () => {
         "Optimized data processing techniques to improve model efficiency and reliability for energy prediction."
       ],
       tags: ["LSTM", "RNN"],
-      imageUrl: "images/energy.png"
+      imageUrl: "/images/energy.png"
     },
     {
       title: "Student performance prediction using linear regression",
@@ -544,7 +544,7 @@ const WorkSection = () => {
         "Analyzed academic data to identify key predictors of student success and improved model accuracy using performance metrics like MSE and R-squared."
       ],
       tags: ["Linear Regression", "Student Success", "Analytics"],
-      imageUrl: "images/studperf.png"
+      imageUrl: "/images/studperf.png"
     }
   ];
 
@@ -606,7 +606,7 @@ const AchievementsSection = () => {
       title: "Best Hack in Open Innovation",
       organization: "BuildWith by HackPrix, CodeforChange, Starknet Foundation",
       description: "Won Best Hack in Open Innovation in BuildWith organized by HackPrix, CodeforChange, Starknet Foundation.",
-      imageUrl: "images/buildwith.png",
+      imageUrl: "/images/buildwith.png",
       linkedin: "https://www.linkedin.com/posts/vivekgoudadula_hackprix-buildwith-teamnexus-activity-7398609163876204545-v2S2?utm_source=share&utm_medium=member_desktop&rcm=ACoAAE2CVP4BEwgpK4twh-XrF8L2GJUF3fycnhA"
     },
     {
@@ -614,7 +614,7 @@ const AchievementsSection = () => {
       title: "2nd Runner-up in DATANYX (MedTech)",
       organization: "Muffakham Jah College of Engineering and Technology, AWS, SMC",
       description: "2nd Runner-up in DATANYX for the Best Project in MedTech Domain organized by Muffakham Jah College of Engineering and Technology, AWS, SMC.",
-      imageUrl: "images/datanyx.png",
+      imageUrl: "/images/datanyx.png",
       linkedin: "https://www.linkedin.com/posts/vivekgoudadula_datanyx2025-medtech-teamnexus-activity-7403310295915470848-yhQD?utm_source=share&utm_medium=member_desktop&rcm=ACoAAE2CVP4BEwgpK4twh-XrF8L2GJUF3fycnhA"
     },
     {
@@ -622,7 +622,7 @@ const AchievementsSection = () => {
       title: "1st Prize in Agentic AI Hackathon",
       organization: "AI Innovators Club, Aurora deemed University",
       description: "Won 1st Prize in Agentic AI Hackathon organized by AI Innovators Club, Aurora deemed University.",
-      imageUrl: "images/agenticai.jpg",
+      imageUrl: "/images/agenticai.jpg",
       linkedin: "https://www.linkedin.com/posts/vivekgoudadula_ai-artificialintelligence-edtech-activity-7361395698623254528-FfbE?utm_source=share&utm_medium=member_desktop&rcm=ACoAAE2CVP4BEwgpK4twh-XrF8L2GJUF3fycnhA"
     },
     {
@@ -630,7 +630,7 @@ const AchievementsSection = () => {
       title: "1st Prize in Mini Hackathon: Code Battle",
       organization: "Game Development Club, Aurora deemed University",
       description: "Won 1st Prize in Mini Hackathon: Code Battle organized by Game Development Club, Aurora deemed University.",
-      imageUrl: "images/codebattle.png",
+      imageUrl: "/images/codebattle.png",
       linkedin: "https://www.linkedin.com/posts/vivekgoudadula_hackathon-codebattle-ai-activity-7375490337114443777-NCe5?utm_source=share&utm_medium=member_desktop&rcm=ACoAAE2CVP4BEwgpK4twh-XrF8L2GJUF3fycnhA"
     },
     {
@@ -638,7 +638,7 @@ const AchievementsSection = () => {
       title: "Best Club – CodeVerse Club",
       organization: "CodeVerse Club, Aurora deemed University",
       description: "Recognized for consistent contributions, technical excellence, and leadership within the club.",
-      imageUrl: "images/codeverse.png",
+      imageUrl: "/images/codeverse.png",
       linkedin: "https://www.linkedin.com/posts/vivekgoudadula_auroradeemeduniversity-buildathon2025-avishkruthi2025-activity-7392738886868844544-CU4A?utm_source=share&utm_medium=member_desktop&rcm=ACoAAE2CVP4BEwgpK4twh-XrF8L2GJUF3fycnhA"
     },
     {
@@ -646,7 +646,7 @@ const AchievementsSection = () => {
       title: "Certificate of Academic Excellence",
       organization: "Aurora deemed University",
       description: "Secured 1st rank in the Freshman year of B. Tech Computer Science and Engineering (AIML) Program for the Academic year 2023-2024.",
-      imageUrl: "images/academic.png",
+      imageUrl: "/images/academic.png",
       linkedin: "https://www.linkedin.com/posts/vivekgoudadula_academicexcellence-btech-aiml-activity-7261613756034568192-09qG?utm_source=share&utm_medium=member_desktop&rcm=ACoAAE2CVP4BEwgpK4twh-XrF8L2GJUF3fycnhA"
     },
     {
@@ -654,7 +654,7 @@ const AchievementsSection = () => {
       title: "Generative AI Certification",
       organization: "Quality Thought Info Systems",
       description: "One of 23 students to clear the GenAI assessment out of 124. Completed a 40-hour hands-on workshop in LLMs, RAG, LangChain, and GenAI app development.",
-      imageUrl: "images/genaiworkshop.png",
+      imageUrl: "/images/genaiworkshop.png",
       linkedin: "https://www.linkedin.com/posts/vivekgoudadula_generativeai-ai-langchain-activity-7402735476144701440-aah7?utm_source=share&utm_medium=member_desktop&rcm=ACoAAE2CVP4BEwgpK4twh-XrF8L2GJUF3fycnhA"
     },
     {
@@ -662,7 +662,7 @@ const AchievementsSection = () => {
       title: "ICASEM 2024 Paper Publication",
       organization: "Advances in Science and technology",
       description: "Published a paper titled 'Unlocking the Power of Matrix Multiplication in Image Processing'.",
-      imageUrl: "images/icasem.png",
+      imageUrl: "/images/icasem.png",
       linkedin: "https://drive.google.com/file/d/1rqyiSfwQNNFzbptSpU4u0AqCpxhfujoK/view"
     }
   ];

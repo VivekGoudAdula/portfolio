@@ -1,0 +1,8 @@
+{
+  "name": "Vivek Goud Adula Portfolio",
+  "description": "A premium, cinematic personal portfolio for Vivek Goud Adula, highlighting AI and Full-Stack development expertise with a sleek dark-mode aesthetic.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone"
+  ]
+}

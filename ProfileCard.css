@@ -232,7 +232,7 @@
 }
 
 .pc-avatar-content {
-  mix-blend-mode: luminosity;
+  /* mix-blend-mode: luminosity; */
   overflow: visible;
   transform: translateZ(2);
   backface-visibility: hidden;
@@ -248,7 +248,12 @@
   bottom: -1px;
   backface-visibility: hidden;
   will-change: transform;
-  transition: transform 120ms ease-out;
+  transition: transform 120ms ease-out, filter 300ms;
+  filter: grayscale(1);
+}
+
+.pc-card-wrapper:hover .pc-avatar-content .avatar {
+  filter: grayscale(0);
 }
 
 .pc-avatar-content::before {

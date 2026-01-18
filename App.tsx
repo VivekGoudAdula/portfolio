@@ -190,7 +190,7 @@ const Navbar = () => {
 
 const Hero = () => {
   const [activeTitle, setActiveTitle] = useState(0);
-  const titles = ["AI Engineer", "Full Stack Developer", "GenAI Builder", "Hackathon Winner"];
+  const titles = ["AI Engineer", "Full Stack Developer", "GenAI Builder", "4x Hackathon Winner"];
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -238,9 +238,6 @@ const Hero = () => {
                 <a href="#work" className="px-8 py-4 bg-white text-black font-bold rounded-xl hover:bg-slate-200 transition-all transform hover:scale-105">
                   View My Work
                 </a>
-                <button className="px-8 py-4 glass text-white font-bold rounded-xl hover:bg-white/10 transition-all transform hover:scale-105 flex items-center gap-2 justify-center">
-                  Download Resume
-                </button>
               </div>
             </motion.div>
 

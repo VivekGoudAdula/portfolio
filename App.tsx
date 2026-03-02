@@ -28,7 +28,7 @@ const SKILLS = [
     name: "Gemini",
     icon: <img src="/images/gemini.png" alt="Gemini" style={{ width: 64, height: 64 }} />,
     category: "AI/ML",
-    level: 80
+    level: 85
   },
   {
     name: "SQL",
@@ -56,28 +56,134 @@ const SKILLS = [
   }
 ];
 
+const internships = [
+  {
+    duration: "May 2025 – August 2025",
+    role: "Artificial Intelligence Intern [Hybrid]",
+    company: "Viswam.AI, Swecha Foundation, IIIT-H",
+    logo: "/images/viswamai.png",
+    points: [
+      "Developed Streamlit-based AI applications integrating Hugging Face models for interactive Q&A.",
+      "Built RAG - Retrieval-Augmented Generation chatbots for generating accurate AI-powered summaries.",
+      "Implemented LLM integration, tokenization, and prompt handling for domain-specific queries."
+    ],
+    skills: ["Python", "Streamlit", "Hugging Face", "RAG", "LLM"]
+  },
+  {
+    duration: "May 2025 – July 2025",
+    role: "Artificial Intelligence Intern [Hybrid]",
+    company: "GENAI Lakes, T-HUB",
+    logo: "/images/genailakes.png",
+    points: [
+      "Developed AI-based NEET & JEE Mock Testing Platform (Crack Orbit) using React, Node.js, and PostgreSQL.",
+      "Built backend for Face Recognition Attendance System with Python (FastAPI) and PostgreSQL.",
+      "Integrated Groq API for AI-powered resume parsing in ATS module, storing structured data in PostgreSQL.",
+      "Implemented Job Description matching system to connect parsed resumes with recruiter postings.",
+      "Collaborated in full-stack development, API integration, and database design for live platforms."
+    ],
+    skills: ["React", "Node.js", "PostgreSQL", "FastAPI", "Groq API"]
+  },
+  {
+    duration: "June 2024 – August 2024",
+    role: "AIML Research, Designing, Digital Marketing [Offline]",
+    company: "Garuda3D",
+    logo: "/images/garuda3d.png",
+    points: [
+      "Researched AI and ML for 3D print failure detection by AI.",
+      "Created professional designs using Canva for Garuda 3D's products and services.",
+      "Contributed to digital marketing efforts, creating content like Instagram posts, Google AdSense templates."
+    ],
+    skills: ["AI/ML Research", "Canva", "Digital Marketing"]
+  },
+  {
+    duration: "May 2024",
+    role: "Python development [Online]",
+    company: "Cognifyz Technologies",
+    logo: "/images/cognifyz.png",
+    points: [
+      "Crafted a Python-based automation script that reduced manual data entry time by 15 hours per week, improving data accuracy and reporting capabilities."
+    ],
+    skills: ["Python", "Automation"]
+  }
+];
+
+const projects = [
+  {
+    title: "AI-Based Pre-Interview Preparation System",
+    duration: "May 2025 – July 2025",
+    description: [
+      "Engineered a personalized interview preparation tool where users upload their resume and job description, and the system generates tailored preparation topics using GenAI models.",
+      "Developed AI-generated study content and structured module-wise quizzes that guide users through role-specific interview readiness.",
+      "Integrated resume parsing, JD analysis, topic generation, and quiz modules into one cohesive pipeline, enhancing the FastJob99 platform with an intelligent pre-interview preparation layer."
+    ],
+    tags: ["GenAI", "Python", "React", "Groq", "Resume Parsing"],
+    imageUrl: "/images/jobprep.png"
+  },
+  {
+    title: "AI-Powered Applicant Tracking System",
+    duration: "May 2025 – July 2025",
+    description: [
+      "Built an AI-driven resume analysis pipeline that extracts key information from uploaded resumes and stores structured data in the database using FastAPI and Python.",
+      "Implemented job description (JD) handling where recruiters can upload JDs, which are then processed and linked with AI-generated candidate matching results.",
+      "Designed a matching module that identifies the best-fit candidates for each JD and integrated the entire solution with a Gradio-based user interface for quick testing and demos."
+    ],
+    tags: ["FastAPI", "Python", "Gradio", "ATS"],
+    imageUrl: "/images/ats.png"
+  },
+  {
+    title: "A holistic design and collaboration for accident rescue app",
+    duration: "October 2024 – November 2024",
+    description: [
+      "Designed an integrated system for accident response, using real-time tracking and smartphone sensors to detect accidents and alert emergency services.",
+      "Collaborated on a platform that facilitates coordination among emergency responders, optimizing response times and resource allocation for improved post-accident care."
+    ],
+    tags: ["Accident Response", "IoT", "Emergency"],
+    imageUrl: "/images/rescue.png"
+  },
+  {
+    title: "Energy consumption prediction using LSTM and RNN",
+    duration: "October 2024 – November 2024",
+    description: [
+      "Developed an energy consumption prediction model using LSTM and RNN, enhancing forecasting accuracy based on historical data.",
+      "Optimized data processing techniques to improve model efficiency and reliability for energy prediction."
+    ],
+    tags: ["LSTM", "RNN"],
+    imageUrl: "/images/energy.png"
+  },
+  {
+    title: "Student performance prediction using linear regression",
+    duration: "October 2024 – November 2024",
+    description: [
+      "Developed a model using linear regression to predict student performance based on factors like attendance, assignments, and prior grades.",
+      "Analyzed academic data to identify key predictors of student success and improved model accuracy using performance metrics like MSE and R-squared."
+    ],
+    tags: ["Linear Regression", "Student Success", "Analytics"],
+    imageUrl: "/images/studperf.png"
+  }
+];
+
 import React, { useState, useEffect, useRef } from 'react';
 import ProfileCard from './ProfileCard';
 import emailjs from 'emailjs-com';
 import { motion, AnimatePresence, useScroll, useSpring } from 'framer-motion';
-import { 
-  Github, 
-  Linkedin, 
-  Mail, 
-  Terminal, 
-  Cpu, 
-  Layers, 
-  Trophy, 
-  Award, 
-  ChevronRight, 
-  Send, 
-  User, 
+import {
+  Github,
+  Linkedin,
+  Mail,
+  Terminal,
+  Cpu,
+  Layers,
+  Trophy,
+  Award,
+  ChevronRight,
+  Send,
+  User,
   Sparkles,
   Menu,
   X,
   Code
 } from 'lucide-react';
-import { GoogleGenAI } from "@google/genai";
+import Groq from "groq-sdk";
 // import removed: constants.tsx no longer exists, all data is now in App.tsx
 
 // --- Utility Components ---
@@ -85,7 +191,7 @@ import { GoogleGenAI } from "@google/genai";
 // Fixed SectionHeading prop types by making children optional to resolve TS errors when passing children via JSX content
 const SectionHeading = ({ children, subtitle }: { children?: React.ReactNode; subtitle?: string }) => (
   <div className="mb-12">
-    <motion.h2 
+    <motion.h2
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
@@ -94,7 +200,7 @@ const SectionHeading = ({ children, subtitle }: { children?: React.ReactNode; su
       {children}
     </motion.h2>
     {subtitle && (
-      <motion.p 
+      <motion.p
         initial={{ opacity: 0, y: 10 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
@@ -123,7 +229,7 @@ const Navbar = () => {
     { name: 'About', href: '#about' },
     { name: 'Skills', href: '#skills' },
     { name: 'Experience', href: '#internship-experience' },
-      { name: 'Projects', href: '#projects' },
+    { name: 'Projects', href: '#projects' },
     { name: 'Contact', href: '#contact' }
   ];
 
@@ -131,8 +237,8 @@ const Navbar = () => {
     <nav className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${scrolled ? 'py-4 glass border-b' : 'py-6 bg-transparent'}`}>
       <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
         <div className="flex items-center gap-3">
-          <motion.div 
-            initial={{ opacity: 0, x: -20 }} 
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             className="text-2xl font-bold font-heading tracking-tighter"
           >
@@ -144,9 +250,9 @@ const Navbar = () => {
         {/* Desktop Nav */}
         <div className="hidden md:flex gap-8 items-center">
           {navLinks.map((link) => (
-            <a 
-              key={link.name} 
-              href={link.href} 
+            <a
+              key={link.name}
+              href={link.href}
               className="text-sm font-medium text-slate-300 hover:text-white transition-colors"
             >
               {link.name}
@@ -163,7 +269,7 @@ const Navbar = () => {
       {/* Mobile Menu */}
       <AnimatePresence>
         {isOpen && (
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
@@ -171,9 +277,9 @@ const Navbar = () => {
           >
             <div className="flex flex-col p-6 gap-4">
               {navLinks.map((link) => (
-                <a 
-                  key={link.name} 
-                  href={link.href} 
+                <a
+                  key={link.name}
+                  href={link.href}
                   onClick={() => setIsOpen(false)}
                   className="text-lg font-medium text-slate-300"
                 >
@@ -208,8 +314,13 @@ const Hero = () => {
 
       <div className="max-w-7xl mx-auto px-6 relative z-10 w-full">
         <div className="flex flex-col md:flex-row items-center justify-center md:justify-between gap-12">
-          {/* Left: Name, titles, etc. */}
-          <div className="flex-1 text-center md:text-left">
+          {/* Left: ProfileCard */}
+          <div className="flex-1 flex justify-center md:justify-center w-full">
+            <ProfileCard showUserInfo enableMobileTilt />
+          </div>
+
+          {/* Right: Name, titles, etc. */}
+          <div className="flex-1 text-center md:text-left md:-ml-20">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
@@ -241,7 +352,7 @@ const Hero = () => {
               </div>
             </motion.div>
 
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 1, duration: 1 }}
@@ -251,10 +362,6 @@ const Hero = () => {
               <a href="https://www.linkedin.com/in/vivekgoudadula/" target="_blank" rel="noopener noreferrer" className="text-slate-400 hover:text-white transition-colors"><Linkedin size={24} /></a>
               <a href="#" className="text-slate-400 hover:text-white transition-colors"><Terminal size={24} /></a>
             </motion.div>
-          </div>
-          {/* Right: ProfileCard */}
-          <div className="flex-1 flex justify-center md:justify-end w-full">
-            <ProfileCard showUserInfo enableMobileTilt />
           </div>
         </div>
       </div>
@@ -275,7 +382,7 @@ const About = () => {
       <div className="grid md:grid-cols-2 gap-16 items-center">
         <div className="relative group">
           <div className="absolute -inset-4 bg-gradient-to-r from-blue-500 to-purple-600 rounded-3xl blur opacity-20 group-hover:opacity-40 transition-opacity" />
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
@@ -378,58 +485,6 @@ const SkillsSection = () => {
 };
 
 const ExperienceSection = () => {
-  // Internship experiences for ExperienceSection
-  const internships = [
-    {
-      duration: "May 2025 – August 2025",
-      role: "Artificial Intelligence Intern [Hybrid]",
-      company: "Viswam.AI, Swecha Foundation, IIIT-H",
-      logo: "/images/viswamai.png",
-      points: [
-        "Developed Streamlit-based AI applications integrating Hugging Face models for interactive Q&A.",
-        "Built RAG - Retrieval-Augmented Generation chatbots for generating accurate AI-powered summaries.",
-        "Implemented LLM integration, tokenization, and prompt handling for domain-specific queries."
-      ],
-      skills: ["Python", "Streamlit", "Hugging Face", "RAG", "LLM"]
-    },
-    {
-      duration: "May 2025 – July 2025",
-      role: "Artificial Intelligence Intern [Hybrid]",
-      company: "GENAI Lakes, T-HUB",
-      logo: "/images/genailakes.png",
-      points: [
-        "Developed AI-based NEET & JEE Mock Testing Platform (Crack Orbit) using React, Node.js, and PostgreSQL.",
-        "Built backend for Face Recognition Attendance System with Python (FastAPI) and PostgreSQL.",
-        "Integrated Gemini API for AI-powered resume parsing in ATS module, storing structured data in PostgreSQL.",
-        "Implemented Job Description matching system to connect parsed resumes with recruiter postings.",
-        "Collaborated in full-stack development, API integration, and database design for live platforms."
-      ],
-      skills: ["React", "Node.js", "PostgreSQL", "FastAPI", "Gemini API"]
-    },
-    {
-      duration: "June 2024 – August 2024",
-      role: "AIML Research, Designing, Digital Marketing [Offline]",
-      company: "Garuda3D",
-      logo: "/images/garuda3d.png",
-      points: [
-        "Researched AI and ML for 3D print failure detection by AI.",
-        "Created professional designs using Canva for Garuda 3D's products and services.",
-        "Contributed to digital marketing efforts, creating content like Instagram posts, Google AdSense templates."
-      ],
-      skills: ["AI/ML Research", "Canva", "Digital Marketing"]
-    },
-    {
-      duration: "May 2024",
-      role: "Python development [Online]",
-      company: "Cognifyz Technologies",
-      logo: "/images/cognifyz.png",
-      points: [
-        "Crafted a Python-based automation script that reduced manual data entry time by 15 hours per week, improving data accuracy and reporting capabilities."
-      ],
-      skills: ["Python", "Automation"]
-    }
-  ];
-
   return (
     <section id="internship-experience" className="py-24 max-w-7xl mx-auto px-6">
       <SectionHeading subtitle="Where my skills met real-world challenges.">Internship Experience</SectionHeading>
@@ -440,7 +495,7 @@ const ExperienceSection = () => {
             <div key={exp.company + exp.duration} className={`relative flex flex-col ${idx % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'} items-center`}>
               <div className="absolute left-0 md:left-1/2 w-4 h-4 rounded-full bg-blue-500 border-4 border-black md:-translate-x-2 z-10" />
               <div className="w-full md:w-5/12 ml-10 md:ml-0">
-                <motion.div 
+                <motion.div
                   initial={{ opacity: 0, x: idx % 2 === 0 ? -50 : 50 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
@@ -489,77 +544,21 @@ const ExperienceSection = () => {
 };
 
 const WorkSection = () => {
-  // Real projects data
-  const projects = [
-    {
-      title: "AI-Based Pre-Interview Preparation System",
-      duration: "May 2025 – July 2025",
-      description: [
-        "Engineered a personalized interview preparation tool where users upload their resume and job description, and the system generates tailored preparation topics using GenAI models.",
-        "Developed AI-generated study content and structured module-wise quizzes that guide users through role-specific interview readiness.",
-        "Integrated resume parsing, JD analysis, topic generation, and quiz modules into one cohesive pipeline, enhancing the FastJob99 platform with an intelligent pre-interview preparation layer."
-      ],
-      tags: ["GenAI","Python", "React", "Gemini", "Resume Parsing"],
-      imageUrl: "/images/jobprep.png"
-    },
-    {
-      title: "AI-Powered Applicant Tracking System",
-      duration: "May 2025 – July 2025",
-      description: [
-        "Built an AI-driven resume analysis pipeline that extracts key information from uploaded resumes and stores structured data in the database using FastAPI and Python.",
-        "Implemented job description (JD) handling where recruiters can upload JDs, which are then processed and linked with AI-generated candidate matching results.",
-        "Designed a matching module that identifies the best-fit candidates for each JD and integrated the entire solution with a Gradio-based user interface for quick testing and demos."
-      ],
-      tags: ["FastAPI", "Python", "Gradio", "ATS"],
-      imageUrl: "/images/ats.png"
-    },
-    {
-      title: "A holistic design and collaboration for accident rescue app",
-      duration: "October 2024 – November 2024",
-      description: [
-        "Designed an integrated system for accident response, using real-time tracking and smartphone sensors to detect accidents and alert emergency services.",
-        "Collaborated on a platform that facilitates coordination among emergency responders, optimizing response times and resource allocation for improved post-accident care."
-      ],
-      tags: ["Accident Response", "IoT", "Emergency"],
-      imageUrl: "/images/rescue.png"
-    },
-    {
-      title: "Energy consumption prediction using LSTM and RNN",
-      duration: "October 2024 – November 2024",
-      description: [
-        "Developed an energy consumption prediction model using LSTM and RNN, enhancing forecasting accuracy based on historical data.",
-        "Optimized data processing techniques to improve model efficiency and reliability for energy prediction."
-      ],
-      tags: ["LSTM", "RNN"],
-      imageUrl: "/images/energy.png"
-    },
-    {
-      title: "Student performance prediction using linear regression",
-      duration: "October 2024 – November 2024",
-      description: [
-        "Developed a model using linear regression to predict student performance based on factors like attendance, assignments, and prior grades.",
-        "Analyzed academic data to identify key predictors of student success and improved model accuracy using performance metrics like MSE and R-squared."
-      ],
-      tags: ["Linear Regression", "Student Success", "Analytics"],
-      imageUrl: "/images/studperf.png"
-    }
-  ];
-
   return (
     <section id="projects" className="py-24 bg-black/40">
       <div className="max-w-7xl mx-auto px-6">
         <SectionHeading subtitle="Proof of concept. Proof of impact.">Projects</SectionHeading>
         <div className="grid md:grid-cols-2 gap-6">
           {projects.map((project, idx) => (
-            <motion.div 
+            <motion.div
               key={project.title + idx}
               whileHover={{ y: -10 }}
               className="group relative glass rounded-2xl overflow-hidden max-w-xl w-full mx-auto"
             >
               <div className="aspect-video overflow-hidden">
-                <img 
-                  src={project.imageUrl} 
-                  alt={project.title} 
+                <img
+                  src={project.imageUrl}
+                  alt={project.title}
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 grayscale hover:grayscale-0"
                 />
               </div>
@@ -854,25 +853,33 @@ const AIChat = () => {
       const context = `
         Candidate: Vivek Goud Adula
         Role: AI & Full-Stack Developer
-        Projects: ${PROJECTS.map(p => p.title).join(', ')}
+        Projects: ${projects.map(p => p.title).join(', ')}
         Skills: ${SKILLS.map(s => s.name).join(', ')}
-        Experience: ${EXPERIENCES.map(e => e.company).join(', ')}
+        Experience: ${internships.map(e => e.company).join(', ')}
       `;
 
-      // Initialize Gemini API client with apiKey from process.env
-      const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
-      // Call generateContent with model name and prompt as per SDK guidelines
-      const response = await ai.models.generateContent({
-        model: 'gemini-3-flash-preview',
-        contents: `You are an assistant for Vivek Goud Adula. 
-        Context: ${context}.
-        User asked: ${userMsg}.
-        Provide a concise, professional answer (under 50 words).`,
+      // Initialize Groq API client
+      const groq = new Groq({
+        apiKey: import.meta.env.VITE_GROQ_API_KEY,
+        dangerouslyAllowBrowser: true
       });
 
-      // Directly access .text property from response as per latest SDK guidelines
-      setMessages(prev => [...prev, { role: 'bot', text: response.text || "Sorry, I'm having trouble thinking right now." }]);
+      const response = await groq.chat.completions.create({
+        messages: [
+          {
+            role: "system",
+            content: `You are an assistant for Vivek Goud Adula. 
+            Context: ${context}.
+            Provide a concise, professional answer (under 50 words).`
+          },
+          { role: "user", content: userMsg }
+        ],
+        model: "llama-3.3-70b-versatile",
+      });
+
+      setMessages(prev => [...prev, { role: 'bot', text: response.choices[0]?.message?.content || "Sorry, I'm having trouble thinking right now." }]);
     } catch (err) {
+      console.error("Groq Error:", err);
       setMessages(prev => [...prev, { role: 'bot', text: "I'm offline for a moment, but Vivek is usually very responsive!" }]);
     } finally {
       setLoading(false);
@@ -883,7 +890,7 @@ const AIChat = () => {
     <div className="fixed bottom-6 right-6 z-[60]">
       <AnimatePresence>
         {isOpen && (
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, scale: 0.9, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.9, y: 20 }}
@@ -918,7 +925,7 @@ const AIChat = () => {
             </div>
 
             <div className="p-4 bg-white/5 border-t border-white/10 flex gap-2">
-              <input 
+              <input
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
                 onKeyDown={(e) => e.key === 'Enter' && handleSend()}
@@ -958,13 +965,13 @@ export default function App() {
   return (
     <div className="min-h-screen relative selection:bg-blue-500/30">
       {/* Scroll Progress Bar */}
-      <motion.div 
+      <motion.div
         className="fixed top-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 z-[70] origin-left"
         style={{ scaleX }}
       />
 
       <Navbar />
-      
+
       <main>
         <Hero />
         <About />

@@ -1,6 +1,12 @@
 import React, { useEffect, useRef, useCallback, useMemo } from 'react';
 import './ProfileCard.css';
 
+// Preload the main avatar image for instant display
+if (typeof window !== 'undefined') {
+  const img = new Image();
+  img.src = 'images/viveknew.jpeg';
+}
+
 interface ProfileCardProps {
   avatarUrl: string;
   iconUrl?: string;
@@ -39,7 +45,7 @@ const adjust = (v: number, fMin: number, fMax: number, tMin: number, tMax: numbe
   round(tMin + ((tMax - tMin) * (v - fMin)) / (fMax - fMin));
 
 const ProfileCardComponent: React.FC<ProfileCardProps> = ({
-  avatarUrl = 'images/viv.png',
+  avatarUrl = 'images/viveknew.jpeg',
   iconUrl = '<Placeholder for icon URL>',
   grainUrl = '<Placeholder for grain URL>',
   innerGradient,

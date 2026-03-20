@@ -1,12 +1,6 @@
 import React, { useEffect, useRef, useCallback, useMemo } from 'react';
 import './ProfileCard.css';
 
-// Preload the main avatar image for instant display
-if (typeof window !== 'undefined') {
-  const img = new Image();
-  img.src = 'images/viveknew.jpeg';
-}
-
 interface ProfileCardProps {
   avatarUrl: string;
   iconUrl?: string;
@@ -45,7 +39,7 @@ const adjust = (v: number, fMin: number, fMax: number, tMin: number, tMax: numbe
   round(tMin + ((tMax - tMin) * (v - fMin)) / (fMax - fMin));
 
 const ProfileCardComponent: React.FC<ProfileCardProps> = ({
-  avatarUrl = 'images/viveknew.jpeg',
+  avatarUrl = '/images/viveknew.jpeg',
   iconUrl = '<Placeholder for icon URL>',
   grainUrl = '<Placeholder for grain URL>',
   innerGradient,
@@ -57,12 +51,12 @@ const ProfileCardComponent: React.FC<ProfileCardProps> = ({
   enableMobileTilt = false,
   mobileTiltSensitivity = 5,
   miniAvatarUrl,
-  name,
-  title,
-  handle,
-  status,
-  contactText,
-  showUserInfo = false,
+  name = 'Javi A. Torres',
+  title = 'Software Engineer',
+  handle = 'javicodes',
+  status = 'Online',
+  contactText = 'Contact',
+  showUserInfo = true,
   onContactClick
 }) => {
   const wrapRef = useRef<HTMLDivElement>(null);
@@ -340,8 +334,6 @@ const ProfileCardComponent: React.FC<ProfileCardProps> = ({
       <div ref={shellRef} className="pc-card-shell">
         <section className="pc-card">
           <div className="pc-inside">
-            <div className="pc-shine" />
-            <div className="pc-glare" />
             <div className="pc-content pc-avatar-content">
               <img
                 className="avatar"
@@ -353,13 +345,6 @@ const ProfileCardComponent: React.FC<ProfileCardProps> = ({
                   t.style.display = 'none';
                 }}
               />
-              {/* Contact/user info box removed as requested */}
-            </div>
-            <div className="pc-content">
-              <div className="pc-details">
-                <h3>{name}</h3>
-                <p>{title}</p>
-              </div>
             </div>
           </div>
         </section>

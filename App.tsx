@@ -296,7 +296,7 @@ const Navbar = () => {
 
 const Hero = () => {
   const [activeTitle, setActiveTitle] = useState(0);
-  const titles = ["AI Engineer", "Full Stack Developer", "GenAI Builder", "4x Hackathon Winner"];
+  const titles = ["AI Engineer", "Full Stack Developer", "GenAI Builder", "6x Hackathon Winner"];
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -312,41 +312,45 @@ const Hero = () => {
         <div className="absolute bottom-1/4 -right-20 w-96 h-96 bg-purple-600/10 rounded-full blur-[120px]" />
       </div>
 
-      <div className="max-w-7xl mx-auto px-6 relative z-10 w-full">
-        <div className="flex flex-col md:flex-row items-center justify-center md:justify-between gap-12">
-          {/* Left: ProfileCard */}
-          <div className="flex-1 flex justify-center md:justify-center w-full">
-            <ProfileCard showUserInfo enableMobileTilt />
-          </div>
+      <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
+        <div className="flex flex-col md:flex-row items-center justify-between gap-8 md:gap-12">
 
-          {/* Right: Name, titles, etc. */}
-          <div className="flex-1 text-center md:text-left md:-ml-20">
+          {/* Left: Info */}
+          <div className="flex-1 min-w-0 flex flex-col items-center text-center">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
+              className="w-full"
             >
-              <h1 className="text-6xl md:text-8xl font-bold font-heading mb-6 tracking-tight">
+              <h1
+                className="font-bold font-heading mb-4 tracking-tight leading-tight"
+                style={{ fontSize: 'clamp(2rem, 5vw, 4.5rem)' }}
+              >
                 VIVEK GOUD ADULA
               </h1>
-              <div className="h-12 md:h-16 mb-8">
+              <div className="mb-6" style={{ minHeight: '2.5em' }}>
                 <AnimatePresence mode="wait">
                   <motion.div
                     key={activeTitle}
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -20 }}
-                    className="text-3xl md:text-5xl font-light text-slate-300"
+                    className="font-light text-slate-300"
+                    style={{ fontSize: 'clamp(1.2rem, 3vw, 2.4rem)' }}
                   >
                     {titles[activeTitle]}
                   </motion.div>
                 </AnimatePresence>
               </div>
-              <p className="text-lg md:text-xl text-slate-400 max-w-2xl md:mx-0 mx-auto mb-10 leading-relaxed">
+              <p
+                className="text-slate-400 max-w-xl mx-auto mb-8 leading-relaxed"
+                style={{ fontSize: 'clamp(0.95rem, 1.6vw, 1.2rem)' }}
+              >
                 I build intelligent systems that solve real-world problems. Specialized in merging modern web technologies with cutting-edge Artificial Intelligence.
               </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
-                <a href="#work" className="px-8 py-4 bg-white text-black font-bold rounded-xl hover:bg-slate-200 transition-all transform hover:scale-105">
+              <div className="flex justify-center">
+                <a href="#projects" className="px-6 py-3 bg-white text-black font-bold rounded-xl hover:bg-slate-200 transition-all transform hover:scale-105 text-sm md:text-base">
                   View My Work
                 </a>
               </div>
@@ -356,12 +360,17 @@ const Hero = () => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 1, duration: 1 }}
-              className="mt-16 flex justify-center md:justify-start gap-8"
+              className="mt-10 flex justify-center gap-8"
             >
-              <a href="https://github.com/VivekGoudAdula" target="_blank" rel="noopener noreferrer" className="text-slate-400 hover:text-white transition-colors"><Github size={24} /></a>
-              <a href="https://www.linkedin.com/in/vivekgoudadula/" target="_blank" rel="noopener noreferrer" className="text-slate-400 hover:text-white transition-colors"><Linkedin size={24} /></a>
-              <a href="#" className="text-slate-400 hover:text-white transition-colors"><Terminal size={24} /></a>
+              <a href="https://github.com/VivekGoudAdula" target="_blank" rel="noopener noreferrer" className="text-slate-400 hover:text-white transition-colors"><Github size={22} /></a>
+              <a href="https://www.linkedin.com/in/vivekgoudadula/" target="_blank" rel="noopener noreferrer" className="text-slate-400 hover:text-white transition-colors"><Linkedin size={22} /></a>
+              <a href="#" className="text-slate-400 hover:text-white transition-colors"><Terminal size={22} /></a>
             </motion.div>
+          </div>
+
+          {/* Right: ProfileCard */}
+          <div className="flex-shrink-0 flex justify-center">
+            <ProfileCard enableMobileTilt />
           </div>
         </div>
       </div>
@@ -371,9 +380,9 @@ const Hero = () => {
 
 const About = () => {
   const stats = [
-    { label: "Hackathons Won", value: "5+" },
-    { label: "Projects Built", value: "20+" },
-    { label: "Tech Stacks", value: "10+" },
+    { label: "Hackathons Won", value: "6" },
+    { label: "Projects Built", value: "10" },
+    { label: "Tech Stacks", value: "10" },
     { label: "CGPA", value: "9.5" }
   ];
 
@@ -597,6 +606,14 @@ const WorkSection = () => {
 const AchievementsSection = () => {
   // Real achievements with images and optional LinkedIn links
   const achievements = [
+    {
+      category: "Hackathon",
+      title: "🥈 2nd Place – Monad Blitz Hyderabad",
+      organization: "Monad Foundation & Hyderabad DAO",
+      description: "Built ShipOrShame – an on-chain accountability protocol on Monad Testnet. Deployed live during the hackathon.",
+      imageUrl: "/images/monad.jpg",
+      linkedin: "https://www.linkedin.com/posts/vivekgoudadula_monadblitz-monad-web3-activity-7433851057723637760-ikmc?"
+    },
     {
       category: "Hackathon",
       title: "Best Hack in Open Innovation",

@@ -243,16 +243,16 @@
 }
 
 .pc-avatar-content {
-  filter: grayscale(1);
+  filter: none;
   overflow: visible;
   transform: translateZ(2);
   backface-visibility: hidden;
-  transition: filter 0.4s ease;
+  transition: none;
 }
 
 .pc-card:hover .pc-avatar-content,
 .pc-card.active .pc-avatar-content {
-  filter: grayscale(0);
+  filter: none;
 }
 
 .pc-avatar-content .avatar {

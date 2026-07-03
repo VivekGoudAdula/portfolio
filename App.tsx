@@ -58,6 +58,31 @@ const SKILLS = [
 
 const internships = [
   {
+    duration: "Apr 2026 – Present",
+    role: "Software Engineer Intern [Hybrid]",
+    company: "Ultrion Tech",
+    logo: "/images/ultriontech.png",
+    points: [
+      "Contributing to design, implementation, and optimization of software solutions and feature pipelines.",
+      "Collaborating with engineering team members to improve application speed and responsiveness."
+    ],
+    skills: ["Software Engineering", "Full Stack Development", "React"]
+  },
+  {
+    duration: "2025 – Present",
+    role: "Full Stack Development Intern [Online]",
+    company: "Nirvaha",
+    logo: "/images/nirvaha.png",
+    points: [
+      "Built a full-stack AI-powered career platform focused on engineering readiness and hiring outcomes.",
+      "Designed and implemented dynamic feature flows for Courses, Skill Assessment, Mock Interviews, Resume Builder, and Hiring Pipeline.",
+      "Developed an Admin Command Center to track student performance, manage courses, and monitor real-time analytics.",
+      "Implemented AI-driven mock interview system with structured evaluation and feedback scoring.",
+      "Designed scalable frontend architecture with modular components and smooth UI/UX interactions."
+    ],
+    skills: ["React", "GenAI", "MongoDB", "FastAPI"]
+  },
+  {
     duration: "May 2025 – August 2025",
     role: "Artificial Intelligence Intern [Hybrid]",
     company: "Viswam.AI, Swecha Foundation, IIIT-H",
@@ -94,16 +119,6 @@ const internships = [
       "Contributed to digital marketing efforts, creating content like Instagram posts, Google AdSense templates."
     ],
     skills: ["AI/ML Research", "Canva", "Digital Marketing"]
-  },
-  {
-    duration: "May 2024",
-    role: "Python development [Online]",
-    company: "Cognifyz Technologies",
-    logo: "/images/cognifyz.png",
-    points: [
-      "Crafted a Python-based automation script that reduced manual data entry time by 15 hours per week, improving data accuracy and reporting capabilities."
-    ],
-    skills: ["Python", "Automation"]
   }
 ];
 
@@ -296,7 +311,7 @@ const Navbar = () => {
 
 const Hero = () => {
   const [activeTitle, setActiveTitle] = useState(0);
-  const titles = ["AI Engineer", "Full Stack Developer", "GenAI Builder", "6x Hackathon Winner"];
+  const titles = ["AI Engineer", "Full Stack Developer", "GenAI Builder", "9x Hackathon Winner"];
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -380,10 +395,10 @@ const Hero = () => {
 
 const About = () => {
   const stats = [
-    { label: "Hackathons Won", value: "6" },
+    { label: "Hackathons Won", value: "9" },
     { label: "Projects Built", value: "10" },
     { label: "Tech Stacks", value: "10" },
-    { label: "CGPA", value: "9.5" }
+    { label: "CGPA", value: "3.75/4.0" }
   ];
 
   return (
@@ -397,7 +412,7 @@ const About = () => {
             viewport={{ once: true }}
             className="relative glass rounded-3xl p-2 w-full max-w-[650px] h-auto bg-black flex items-center justify-center"
           >
-            <img src="/images/story.png" alt="Vivek Goud Adula" className="rounded-2xl object-contain w-full h-auto grayscale hover:grayscale-0 transition-all duration-700 bg-black" />
+            <img src="/images/story.png" alt="Vivek Goud Adula" className="rounded-2xl object-contain w-full h-auto bg-black" />
           </motion.div>
         </div>
 
@@ -510,19 +525,15 @@ const ExperienceSection = () => {
                   viewport={{ once: true }}
                   className="glass p-8 rounded-3xl hover:border-blue-500/30 transition-all group"
                 >
-                  <div className="flex items-center mb-2 justify-between">
-                    <span className="text-blue-400 text-sm font-bold block">{exp.duration}</span>
+                  <div className="flex items-center justify-between gap-4 mb-4">
+                    <h4 className="text-2xl font-bold text-white">{exp.company}</h4>
                     {exp.logo && (
-                      exp.company === "GENAI Lakes, T-HUB" ? (
-                        <img src={exp.logo} alt={exp.company + ' logo'} className="h-28 w-28 object-contain rounded" />
-                      ) : (
-                        <img src={exp.logo} alt={exp.company + ' logo'} className="h-20 w-20 object-contain rounded" />
-                      )
+                      <img src={exp.logo} alt={exp.company + ' logo'} className="h-16 max-w-[120px] object-contain rounded" />
                     )}
                   </div>
-                  <h3 className="text-2xl font-bold mb-1">{exp.role}</h3>
-                  <div className="mb-6">
-                    <h4 className="text-slate-400 font-medium">{exp.company}</h4>
+                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-6">
+                    <h3 className="text-base font-semibold text-slate-300">{exp.role}</h3>
+                    <span className="text-blue-400 text-xs font-bold">{exp.duration}</span>
                   </div>
                   <ul className="space-y-3 mb-8">
                     {exp.points.map((p, i) => (
@@ -606,6 +617,30 @@ const WorkSection = () => {
 const AchievementsSection = () => {
   // Real achievements with images and optional LinkedIn links
   const achievements = [
+    {
+      category: "Academic",
+      title: "🏆 University Topper (Rank 1)",
+      organization: "Aurora deemed University",
+      description: "Recognized as the University Topper for the academic year 2025-26 on July 1st, 2026.",
+      imageUrl: "/images/univtopper.jpeg",
+      linkedin: "https://www.linkedin.com/posts/vivekgoudadula_universitytopper-meritscholarship-academicexcellence-activity-7478680669406216192-WW9A?utm_source=share&utm_medium=member_desktop&rcm=ACoAAE2CVP4BEwgpK4twh-XrF8L2GJUF3fycnhA"
+    },
+    {
+      category: "Hackathon",
+      title: "🥇 Winner – CodeQuest 2026",
+      organization: "National GenAI Hackathon",
+      description: "Winner of CodeQuest 2026, National GenAI Hackathon held on April 12th, 2026.",
+      imageUrl: "/images/codequest.png",
+      linkedin: "https://www.linkedin.com/posts/vivekgoudadula_codequest2026-hackathon-winner-activity-7459816402594586624-Jf1r?utm_source=share&utm_medium=member_desktop&rcm=ACoAAE2CVP4BEwgpK4twh-XrF8L2GJUF3fycnhA"
+    },
+    {
+      category: "Hackathon",
+      title: "🏆 Won $2,000 USD – AlgoBharat HackSeries 3.0",
+      organization: "AlgoBharat",
+      description: "Won $2,000 USD at AlgoBharat HackSeries 3.0 held in Goa, competing among 400+ applications across India.",
+      imageUrl: "/images/algoharat.jpeg",
+      linkedin: "https://www.linkedin.com/posts/vivekgoudadula_algorand-algobharat-algorandindia-activity-7474825107186823169-sc08?utm_source=share&utm_medium=member_desktop&rcm=ACoAAE2CVP4BEwgpK4twh-XrF8L2GJUF3fycnhA"
+    },
     {
       category: "Hackathon",
       title: "🥈 2nd Place – Monad Blitz Hyderabad",
@@ -1011,7 +1046,7 @@ export default function App() {
         </div>
       </footer>
 
-      <AIChat />
+      {/* <AIChat /> */}
     </div>
   );
 }

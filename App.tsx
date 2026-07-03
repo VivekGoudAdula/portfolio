@@ -124,6 +124,57 @@ const internships = [
 
 const projects = [
   {
+    title: "AgentForge – AI Agent Marketplace & Pay-Per-Use Agent Commerce Platform",
+    duration: "Current Project",
+    description: [
+      "Designed a pay-per-use AI agent marketplace enabling developers to publish, monetize, and distribute specialized AI agents while users pay only for the exact executions.",
+      "Supports secure USDC micropayments via x402 on Algorand Mainnet, featuring AI workflow execution, developer revenue sharing, wallet management, and business intelligence dashboards.",
+      "Integrated React, Node.js, MongoDB, Groq LLM, and JWT authentication to establish a highly scalable, decentralized agent economy."
+    ],
+    tags: ["React", "Node.js", "MongoDB", "x402", "Algorand", "USDC", "Groq LLM"],
+    imageUrl: "/images/agentforge.png",
+    githubUrl: "https://github.com/VivekGoudAdula/AgentForge"
+  },
+  {
+    title: "ProcureAI – AI-Powered Procurement Intelligence Platform",
+    duration: "May 2026 – June 2026",
+    description: [
+      "Developed an AI procurement intelligence platform streamlining complete sourcing workflows—from supplier discovery to multilingual negotiation and supplier trust analysis.",
+      "Designed and deployed reusable pay-per-use procurement APIs with blockchain-backed escrow commitments using Algorand and the x402 protocol.",
+      "Leveraged React, FastAPI, MongoDB Atlas, and Groq Llama 3 to automate organization-wide procurement operations and negotiation insights."
+    ],
+    tags: ["React", "FastAPI", "MongoDB Atlas", "Groq Llama 3", "Algorand", "x402"],
+    imageUrl: "/images/procureai.png",
+    githubUrl: "https://github.com/VivekGoudAdula/Procure-AI",
+    liveUrl: "https://procureai-algobharat.vercel.app/"
+  },
+  {
+    title: "AstraHire AI – Predictive Talent Intelligence & AI Recruitment Platform",
+    duration: "April 2026 – May 2026",
+    description: [
+      "Created an AI recruitment platform automating sourcing, screening, outreach, and real-time voice interviews to reduce hiring times from weeks to hours.",
+      "Integrated resume parsing, GitHub activity analysis, candidate intent prediction using behavioral signals, and an end-to-end intelligent tracking workflow.",
+      "Built with React, FastAPI, MongoDB, Groq LLM, ElevenLabs, Twilio, and Mem0 AI for advanced recruitment automation and predictive intelligence."
+    ],
+    tags: ["React", "FastAPI", "MongoDB", "Groq LLM", "ElevenLabs", "Twilio", "Mem0 AI"],
+    imageUrl: "/images/astrahire.png",
+    githubUrl: "https://github.com/VivekGoudAdula/AstraHire-AI",
+    liveUrl: "https://astrahire-ai.vercel.app/"
+  },
+  {
+    title: "Startup Copilot – AI-Powered Startup Co-Founder",
+    duration: "March 2026 – April 2026",
+    description: [
+      "Engineered an interactive platform that validates startup ideas, generates SWOT analyses, competitor insights, MVP roadmaps, and landing page copy in real time.",
+      "Designed role-based prompt engineering using Groq LLM and calculated investability scores to guide early-stage founders from idea to execution.",
+      "Implemented a highly responsive user experience using React, FastAPI, Python, and Tailwind CSS."
+    ],
+    tags: ["React", "FastAPI", "Tailwind CSS", "Python", "Groq LLM"],
+    imageUrl: "/images/aicofounder.png",
+    githubUrl: "https://github.com/VivekGoudAdula/startup-copilot",
+    liveUrl: "https://start-up-copilot.vercel.app/"
+  },
+  {
     title: "AI-Based Pre-Interview Preparation System",
     duration: "May 2025 – July 2025",
     description: [
@@ -144,36 +195,6 @@ const projects = [
     ],
     tags: ["FastAPI", "Python", "Gradio", "ATS"],
     imageUrl: "/images/ats.png"
-  },
-  {
-    title: "A holistic design and collaboration for accident rescue app",
-    duration: "October 2024 – November 2024",
-    description: [
-      "Designed an integrated system for accident response, using real-time tracking and smartphone sensors to detect accidents and alert emergency services.",
-      "Collaborated on a platform that facilitates coordination among emergency responders, optimizing response times and resource allocation for improved post-accident care."
-    ],
-    tags: ["Accident Response", "IoT", "Emergency"],
-    imageUrl: "/images/rescue.png"
-  },
-  {
-    title: "Energy consumption prediction using LSTM and RNN",
-    duration: "October 2024 – November 2024",
-    description: [
-      "Developed an energy consumption prediction model using LSTM and RNN, enhancing forecasting accuracy based on historical data.",
-      "Optimized data processing techniques to improve model efficiency and reliability for energy prediction."
-    ],
-    tags: ["LSTM", "RNN"],
-    imageUrl: "/images/energy.png"
-  },
-  {
-    title: "Student performance prediction using linear regression",
-    duration: "October 2024 – November 2024",
-    description: [
-      "Developed a model using linear regression to predict student performance based on factors like attendance, assignments, and prior grades.",
-      "Analyzed academic data to identify key predictors of student success and improved model accuracy using performance metrics like MSE and R-squared."
-    ],
-    tags: ["Linear Regression", "Student Success", "Analytics"],
-    imageUrl: "/images/studperf.png"
   }
 ];
 
@@ -579,7 +600,7 @@ const WorkSection = () => {
                 <img
                   src={project.imageUrl}
                   alt={project.title}
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 grayscale hover:grayscale-0"
+                  className="w-full h-full object-cover"
                 />
               </div>
               <div className="p-4">
@@ -598,12 +619,40 @@ const WorkSection = () => {
                   ))}
                 </ul>
                 <div className="flex gap-2">
-                  <button className="flex-1 px-3 py-2 glass rounded-lg text-xs font-bold hover:bg-white/10 transition-all">
-                    View Case Study
-                  </button>
-                  <a href="#" className="p-2 glass rounded-lg hover:bg-white/10 transition-all">
-                    <Github size={16} />
-                  </a>
+                  {project.liveUrl ? (
+                    <a
+                      href={project.liveUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex-1 px-3 py-2 glass rounded-lg text-xs font-bold hover:bg-white/10 transition-all text-center flex items-center justify-center"
+                    >
+                      Live Demo
+                    </a>
+                  ) : (
+                    <button
+                      disabled
+                      className="flex-1 px-3 py-2 glass rounded-lg text-xs font-bold opacity-50 cursor-not-allowed text-center"
+                    >
+                      {project.title.includes("AgentForge") ? "In Development" : "View Project"}
+                    </button>
+                  )}
+                  {project.githubUrl ? (
+                    <a
+                      href={project.githubUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="p-2 glass rounded-lg hover:bg-white/10 transition-all flex items-center justify-center"
+                    >
+                      <Github size={16} />
+                    </a>
+                  ) : (
+                    <button
+                      disabled
+                      className="p-2 glass rounded-lg opacity-50 cursor-not-allowed flex items-center justify-center"
+                    >
+                      <Github size={16} />
+                    </button>
+                  )}
                 </div>
               </div>
             </motion.div>
